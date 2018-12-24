@@ -11,7 +11,7 @@ keywords = ["tls"]
 travis-ci = { repository = "https://github.com/stepancheg/rust-tls-api/", branch = "master" }
 
 [dependencies]
-rustls = { version = "0.13", features = ["dangerous_configuration"] }
+rustls = { version = "0.14", features = ["dangerous_configuration"] }
 tls-api = { path = "../api", version = "=0.1.20" }
 webpki       = "0.18"
 webpki-roots = "0.15"
