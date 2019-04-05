@@ -171,7 +171,7 @@ impl<S, T> tls_api::TlsStreamImpl<S> for TlsStream<S, T>
     }
 
     fn get_alpn_protocol(&self) -> Option<Vec<u8>> {
-        self.session.get_alpn_protocol().map(|p| p.as_bytes().to_vec())
+        self.session.get_alpn_protocol().map(|p| p.to_vec())
     }
 }
 
@@ -234,7 +234,7 @@ impl tls_api::TlsConnectorBuilder for TlsConnectorBuilder {
     fn set_alpn_protocols(&mut self, protocols: &[&[u8]]) -> Result<()> {
         let mut v = Vec::new();
         for p in protocols {
-            v.push(String::from(str::from_utf8(p).map_err(Error::new)?));
+            v.push(p.to_vec());
         }
         self.0.alpn_protocols = v;
         Ok(())
@@ -337,7 +337,7 @@ impl tls_api::TlsAcceptorBuilder for TlsAcceptorBuilder {
     fn set_alpn_protocols(&mut self, protocols: &[&[u8]]) -> Result<()> {
         let mut v = Vec::new();
         for p in protocols {
-            v.push(String::from(str::from_utf8(p).map_err(Error::new)?));
+            v.push(p.to_vec());
         }
         self.0.alpn_protocols = v;
         Ok(())

@@ -13,10 +13,10 @@ travis-ci = { repository = "https://github.com/stepancheg/rust-tls-api/", branch
 [dependencies]
 tls-api = { path = "../api", version = "=0.1.20" }
 log        = "0.4"
-env_logger = "0.5"
+env_logger = "0.6"
 
 pem        = "0.5"
-webpki     = "0.18"
+webpki     = "0.19"
 untrusted  = "0.6"
 
 futures       = "0.1"
